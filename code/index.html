@@ -1,0 +1,557 @@
+HELLO-TEST-123<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Your Relocation Code · Dina Zoa</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Your birth date carries two numbers that show which countries and which kind of city amplify your energy. Get them free in 60 seconds.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Mulish:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --void:#0d0720;
+    --panel:#170c30;
+    --line: rgba(157,125,232,0.22);
+    --gold:#b8912f;
+    --gold-light:#e8c877;
+    --violet:#9d7de8;
+    --ink:#f5f0ff;
+    --ink-muted:#a99bc4;
+    --ink-faint: rgba(169,155,196,0.55);
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    background:var(--void);
+    color:var(--ink);
+    font-family:'Mulish', system-ui, sans-serif;
+    line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+    min-height:100vh;
+    overflow-x:hidden;
+  }
+  h1,h2,h3{font-family:'Fraunces', Georgia, serif;font-weight:500;line-height:1.2;text-wrap:balance;margin:0;}
+  .mono{font-family:'Space Mono','Courier New',monospace;font-variant-numeric:tabular-nums;}
+
+  #stars{position:fixed;inset:0;z-index:0;display:block;width:100%;height:100%;}
+
+  .stage{position:relative;z-index:1;min-height:100vh;display:flex;align-items:flex-start;justify-content:center;padding:44px 18px 120px;}
+  .card{
+    width:100%;max-width:580px;
+    background:linear-gradient(180deg, rgba(23,12,48,0.94), rgba(13,7,32,0.97));
+    border:1px solid var(--line);
+    border-radius:22px;
+    padding:40px 38px;
+    box-shadow:0 40px 100px -30px rgba(0,0,0,0.65);
+  }
+  @media(max-width:560px){ .card{padding:28px 20px;border-radius:18px;} .stage{padding:20px 12px 110px;} }
+
+  .rail{display:flex;align-items:center;gap:8px;justify-content:center;margin-bottom:30px;}
+  .rail .dot{width:6px;height:6px;border-radius:50%;background:rgba(169,155,196,0.3);transition:.3s;}
+  .rail .dot.done{background:var(--gold);}
+  .rail .dot.active{background:var(--violet);transform:scale(1.6);}
+  .rail .line{width:22px;height:1px;background:rgba(169,155,196,0.22);}
+
+  .eyebrow{font-family:'Space Mono',monospace;font-size:11px;letter-spacing:0.22em;text-transform:uppercase;color:var(--gold-light);text-align:center;margin-bottom:14px;}
+  .step h1{font-size:clamp(24px,5.2vw,33px);text-align:center;margin-bottom:14px;}
+  .step h1 em{font-style:normal;background:linear-gradient(135deg,var(--gold-light),var(--violet));-webkit-background-clip:text;background-clip:text;color:transparent;}
+  .lede{text-align:center;color:var(--ink-muted);font-size:15.5px;max-width:430px;margin:0 auto 28px;}
+
+  .btn{
+    display:flex;align-items:center;justify-content:center;gap:9px;width:100%;
+    background:var(--gold);color:#0d0720;font-family:'Mulish',sans-serif;font-weight:700;font-size:15px;
+    padding:16px 24px;border-radius:12px;border:none;cursor:pointer;text-decoration:none;text-align:center;
+    transition:transform .15s ease, box-shadow .15s ease;
+  }
+  .btn:hover{transform:translateY(-1px);box-shadow:0 10px 30px -8px rgba(184,145,47,0.5);}
+  .btn:disabled{opacity:.35;cursor:not-allowed;transform:none;box-shadow:none;}
+  .btn-ghost{
+    background:transparent;color:var(--ink);border:1px solid var(--line);font-weight:600;
+  }
+  .btn-ghost:hover{background:rgba(157,125,232,0.08);box-shadow:none;}
+
+  .field{margin-bottom:22px;}
+  .field label{display:block;font-size:12.5px;letter-spacing:.05em;text-transform:uppercase;color:var(--ink-faint);margin-bottom:10px;text-align:center;}
+  .date-row{display:flex;gap:9px;}
+  .date-row select{
+    width:100%;background:rgba(255,255,255,0.03);border:1px solid var(--line);border-radius:10px;
+    padding:13px 8px;color:var(--ink);font-family:'Space Mono',monospace;font-size:15px;text-align:center;appearance:none;
+  }
+  .date-row select:focus{outline:2px solid var(--violet);outline-offset:1px;}
+  .date-row select option{background:#170c30;color:var(--ink);}
+
+  .codes{display:flex;gap:12px;justify-content:center;margin-bottom:8px;}
+  .code-tile{
+    flex:1;background:radial-gradient(circle at 50% 0%, rgba(157,125,232,0.18), transparent 70%), rgba(255,255,255,0.02);
+    border:1px solid var(--line);border-radius:16px;padding:20px 12px;text-align:center;
+  }
+  .code-tile .num{font-family:'Space Mono',monospace;font-size:clamp(36px,10vw,46px);font-weight:700;color:var(--gold-light);text-shadow:0 0 24px rgba(232,200,119,.35);line-height:1;}
+  .code-tile .num-label{margin-top:9px;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-faint);}
+
+  .meter{
+    display:flex;align-items:center;gap:10px;justify-content:center;
+    font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--ink-faint);margin:22px 0 26px;
+  }
+  .meter .bar{flex:1;max-width:150px;height:3px;background:rgba(169,155,196,.18);border-radius:2px;overflow:hidden;}
+  .meter .bar i{display:block;height:100%;width:25%;background:linear-gradient(90deg,var(--gold),var(--violet));transition:width .5s ease;}
+
+  .reveal{
+    border:1px solid var(--line);border-radius:16px;margin-bottom:14px;overflow:hidden;
+    background:rgba(255,255,255,0.015);
+  }
+  .reveal > button{
+    width:100%;background:none;border:none;cursor:pointer;text-align:left;
+    padding:18px 20px;display:flex;align-items:center;justify-content:space-between;gap:14px;
+    color:var(--ink);font-family:'Mulish',sans-serif;font-size:15px;font-weight:600;
+  }
+  .reveal > button:hover{background:rgba(157,125,232,.06);}
+  .reveal > button .tag{
+    font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--gold-light);white-space:nowrap;
+  }
+  .reveal.open > button .tag{color:var(--ink-faint);}
+  .reveal .body{padding:0 20px 20px;color:var(--ink-muted);font-size:15px;}
+  .reveal .body h4{
+    font-family:'Space Mono',monospace;font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;
+    color:var(--violet);margin:18px 0 8px;font-weight:700;
+  }
+  .reveal .body h4:first-child{margin-top:0;}
+  .reveal .body ul{margin:0;padding-left:18px;}
+  .reveal .body li{margin-bottom:5px;}
+  .reveal .body .cityname{color:var(--ink);font-family:'Fraunces',serif;font-size:19px;display:block;margin-bottom:8px;}
+
+  .chips{display:flex;flex-wrap:wrap;gap:7px;}
+  .chip{font-family:'Space Mono',monospace;font-size:12.5px;color:var(--ink);background:rgba(255,255,255,.04);border:1px solid var(--line);border-radius:999px;padding:6px 13px;}
+  .chip.dim{color:var(--ink-faint);}
+  .chip.locked{
+    color:var(--gold-light);border-color:rgba(184,145,47,.42);background:rgba(184,145,47,.08);
+  }
+  .gated{
+    margin:16px 0 0;font-size:13.5px;color:var(--gold-light);
+    border-left:2px solid rgba(184,145,47,.45);padding-left:12px;line-height:1.55;
+  }
+
+  .divider{display:flex;align-items:center;gap:14px;margin:34px 0 24px;}
+  .divider span{font-family:'Space Mono',monospace;font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-faint);white-space:nowrap;}
+  .divider:before,.divider:after{content:"";flex:1;height:1px;background:var(--line);}
+
+  .lock{
+    border:1px solid rgba(184,145,47,0.26);border-radius:16px;margin-bottom:12px;
+    background:rgba(184,145,47,0.05);overflow:hidden;
+  }
+  .lock > button{
+    width:100%;background:none;border:none;cursor:pointer;text-align:left;padding:17px 20px;
+    display:flex;align-items:flex-start;gap:13px;color:var(--ink);font-family:'Mulish',sans-serif;font-size:15px;font-weight:600;
+  }
+  .lock > button:hover{background:rgba(184,145,47,.08);}
+  .lock .ico{flex:none;width:22px;height:22px;margin-top:1px;opacity:.85;}
+  .lock .body{padding:0 20px 20px 53px;color:var(--ink-muted);font-size:14.5px;}
+  .lock .body .day{
+    display:inline-block;font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--gold-light);border:1px solid rgba(184,145,47,.4);border-radius:999px;padding:3px 10px;margin-top:12px;
+  }
+  @media(max-width:560px){ .lock .body{padding-left:20px;} }
+
+  .close{
+    background:linear-gradient(180deg, rgba(157,125,232,0.12), rgba(157,125,232,0.03));
+    border:1px solid var(--line);border-radius:18px;padding:26px 22px;margin-top:8px;text-align:center;
+  }
+  .close h3{font-size:22px;margin-bottom:10px;}
+  .close p{color:var(--ink-muted);font-size:15px;margin:0 0 20px;}
+  .price-line{
+    font-family:'Space Mono',monospace;font-size:12px;letter-spacing:.1em;text-transform:uppercase;
+    color:var(--ink-faint);margin-top:14px;
+  }
+  .price-line b{color:var(--gold-light);}
+
+  .foot-note{text-align:center;margin-top:18px;font-size:12.5px;color:var(--ink-faint);}
+  .hidden{display:none !important;}
+
+  .fade{animation:fade .45s ease both;}
+  @keyframes fade{from{opacity:0;transform:translateY(6px);}to{opacity:1;transform:none;}}
+
+  @media (prefers-reduced-motion: reduce){
+    .fade{animation:none;}
+    .btn,.reveal,.lock{transition:none;}
+  }
+</style>
+</head>
+<body>
+
+<canvas id="stars" aria-hidden="true"></canvas>
+
+<div class="stage">
+  <div class="card">
+
+    <div class="rail" id="rail">
+      <div class="dot active" data-i="0"></div><div class="line"></div>
+      <div class="dot" data-i="1"></div><div class="line"></div>
+      <div class="dot" data-i="2"></div>
+    </div>
+
+    <!-- ============ STEP 0 ============ -->
+    <section class="step" id="step-0">
+      <div class="eyebrow">Dina Zoa · The Space Code</div>
+      <h1>The place where you thrive the most is already <em>written</em> into your birth date</h1>
+      <p class="lede">Two numbers from the day you were born decide which countries feed you and which quietly drain you. Get both of them now, free.</p>
+      <button class="btn" id="start-btn">Calculate my code</button>
+      <div class="foot-note">60 seconds, no email, no sign up</div>
+    </section>
+
+    <!-- ============ STEP 1 ============ -->
+    <section class="step hidden" id="step-1">
+      <div class="eyebrow">Step 1 of 2</div>
+      <h1>When were you born</h1>
+      <p class="lede">The day gives you one number, the whole date gives you the second. Together they are your relocation code.</p>
+
+      <div class="field">
+        <label for="sel-day">Date of birth</label>
+        <div class="date-row">
+          <select id="sel-day" aria-label="Day"></select>
+          <select id="sel-month" aria-label="Month"></select>
+          <select id="sel-year" aria-label="Year"></select>
+        </div>
+      </div>
+
+      <button class="btn" id="calc-btn" disabled>Reveal my code</button>
+      <div class="foot-note">Nothing is stored, the calculation runs in your browser</div>
+    </section>
+
+    <!-- ============ STEP 2 ============ -->
+    <section class="step hidden" id="step-2">
+      <div class="eyebrow">Your result</div>
+      <h1 style="margin-bottom:22px;">Your relocation code is <em id="code-pair">–</em></h1>
+
+      <div class="codes">
+        <div class="code-tile">
+          <div class="num mono" id="out-birth">–</div>
+          <div class="num-label">Birth Number</div>
+        </div>
+        <div class="code-tile">
+          <div class="num mono" id="out-life">–</div>
+          <div class="num-label">Life Path Number</div>
+        </div>
+      </div>
+
+      <div class="meter">
+        <span id="meter-text">1 of 4 unlocked</span>
+        <div class="bar"><i id="meter-bar" style="width:25%"></i></div>
+      </div>
+
+      <p class="lede" style="margin-bottom:22px;">Three more pieces are already yours. Open them one by one.</p>
+
+      <!-- reveal 1: countries -->
+      <div class="reveal" id="rev-1">
+        <button type="button" data-rev="1">
+          <span>The countries that match your Life Path</span>
+          <span class="tag">Open</span>
+        </button>
+        <div class="body hidden">
+          <div class="chips" id="out-countries"></div>
+          <p style="margin:16px 0 0;font-size:14px;" id="country-note"></p>
+        </div>
+      </div>
+
+      <!-- reveal 2: city energy -->
+      <div class="reveal" id="rev-2">
+        <button type="button" data-rev="2">
+          <span>The kind of city that fits your code</span>
+          <span class="tag">Open</span>
+        </button>
+        <div class="body hidden">
+          <span class="cityname" id="out-city-name"></span>
+          <div id="out-city-text"></div>
+          <p class="gated">The rest of this reading, what this energy does to your money, your work and your relationships once you live inside it, is opened on day 2.</p>
+        </div>
+      </div>
+
+      <!-- reveal 3: light and shadow -->
+      <div class="reveal" id="rev-3">
+        <button type="button" data-rev="3">
+          <span>The light and the shadow of your Birth Number</span>
+          <span class="tag">Open</span>
+        </button>
+        <div class="body hidden">
+          <h4>Where your number shines</h4>
+          <ul id="out-pos"></ul>
+          <h4>Where it costs you</h4>
+          <ul id="out-neg"></ul>
+          <p style="margin:14px 0 0;font-size:14px;">The right place amplifies the first list. The wrong one amplifies the second, which is why the same person can look unrecognizable in two different cities.</p>
+          <p class="gated">This is the short version of your number. The full portrait, including how it behaves under stress and in money, is day 1.</p>
+        </div>
+      </div>
+
+      <div class="divider"><span>Still closed</span></div>
+
+      <p class="lede" style="margin-bottom:22px;">You now have your code and what it means in general. Three things it cannot tell you yet, and each one is a day of the intensive.</p>
+
+      <!-- LOCK 1 -->
+      <div class="lock">
+        <button type="button" data-lock="1">
+          <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="#e8c877" stroke-width="1.6"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg>
+          <span>Does your chart even carry relocation numbers?</span>
+        </button>
+        <div class="body hidden">
+          Not every chart does. Some people get everything they need where they already are, and moving costs them more than it gives. Others carry the movement numbers and stay stuck for years in a place that keeps them small. Your two base numbers cannot answer this, the full chart can.
+          <span class="day">Day 1 · September 22</span>
+        </div>
+      </div>
+
+      <!-- LOCK 2 -->
+      <div class="lock">
+        <button type="button" data-lock="2">
+          <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="#e8c877" stroke-width="1.6"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg>
+          <span>The number of the city you are actually looking at</span>
+        </button>
+        <div class="body hidden">
+          You just read what every city energy means. What you still cannot do is take the city you have been thinking about, Dubai, Lisbon, Tbilisi, Bali, whichever one keeps coming back to you, and work out which number it carries. That calculation is the core of day 2, and once you have it you can check any place on earth yourself, for the rest of your life.
+          <span class="day">Day 2 · September 23</span>
+        </div>
+      </div>
+
+      <!-- LOCK 3 -->
+      <div class="lock">
+        <button type="button" data-lock="3">
+          <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="#e8c877" stroke-width="1.6"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg>
+          <span>When to go, and when moving will cost you</span>
+        </button>
+        <div class="body hidden">
+          The right place in the wrong year still feels wrong, and most people read that as proof the place was a mistake. Your personal cycles say which years carry movement easily and which ones ask you to stay put and build. This is the piece that turns a code into a decision with a date on it.
+          <span class="day">Day 3 · September 24</span>
+        </div>
+      </div>
+
+      <div class="close">
+        <h3>All three open on the same three days</h3>
+        <p>Live with Dina on Zoom, September 22 to 24, replay included. Your code travels with you to the next page, nothing to type in again.</p>
+        <a class="btn" id="site-link" href="../">Unlock my full code — Sept 22–24, $77</a>
+        <div class="price-line">3 live days · replay included · <b>$77</b></div>
+      </div>
+
+      <div class="foot-note">Made by Dina Zoa, numerologist, author of Decode Your Life</div>
+    </section>
+
+  </div>
+</div>
+
+<script>
+/* ============================================================
+   DATA, all of it from Dina's own materials
+   ============================================================ */
+var COUNTRIES = {
+  1:["Australia","Barbados","Israel","India","Costa Rica","United States","Denmark"],
+  2:["Andorra","Germany","Mexico","Indonesia","Kazakhstan","Thailand","Monaco","Lithuania","Malaysia"],
+  3:["Finland","Liechtenstein","Albania","Cyprus","United Arab Emirates","Sweden","United States"],
+  4:["Belarus","Colombia","Poland","Tunisia","Mongolia","Chile"],
+  5:["Austria","Greece","Romania","Ecuador","Georgia","Moldova","Algeria"],
+  6:["Brazil","Ireland","Spain","France","Maldives","Switzerland","Norway","Singapore","Italy","Luxembourg","Ukraine"],
+  7:["Armenia","Serbia","Bulgaria","Iceland","Nepal","United Kingdom","Mauritius","Slovenia","Malta","Russia","New Zealand","Czech Republic","Croatia","Japan"],
+  8:["Belgium","Hungary","Vietnam","Latvia","Morocco","Peru","Montenegro","Canada","Slovakia","Philippines"],
+  9:["Argentina","Egypt","China","Netherlands","Portugal","Turkiye","Cuba","Estonia"]
+};
+
+var CITY = {
+  1:{name:"The City of Leadership and Ambition", text:"Dynamic, fast paced, always rebuilding itself. It suits people who move on their own initiative, and it rewards that initiative with speed."},
+  2:{name:"The City of Love and Connection", text:"Harmony, romance and real relationships run through this one. It draws warm, cooperative people, and it is one of the best places to meet a partner and make a home that feels calm."},
+  3:{name:"The City of Family and Community", text:"This city holds a family well, at every age, children and grandparents alike. If your plan involves providing for people you love and building something stable around them, it will back you."},
+  4:{name:"The City of Stability", text:"Life here follows a predictable rhythm and rewards consistency, discipline and long horizons rather than sudden change. Ideal if you are building a career step by step."},
+  5:{name:"The City of Adventure", text:"Constant movement, frequent change, wins and setbacks trading places quickly. It attracts people who love travel, new faces, freedom and the chance to reinvent themselves."},
+  6:{name:"The City of Beauty and Service", text:"Strong ground for anything built on care, beauty, wellness, psychology, education or hospitality. It supports harmonious relationships, comfort, creativity and taste."},
+  7:{name:"The City of Wisdom and Solitude", text:"Made for study, writing, spiritual practice and self discovery. Introverts feel instantly at home, very social people need to find their circle here deliberately."},
+  8:{name:"The City of Business and Achievement", text:"Fast developing, tightly connected to money, commerce and large projects. Excellent for business, banking, investing and serious careers."},
+  9:{name:"The City of Higher Wisdom", text:"A slower, more reflective pace with a spiritual and humanitarian charge. People here lean toward philosophy, culture, education and work that serves more than themselves."}
+};
+
+var LIGHT = {
+  1:["Natural leader, pioneer, wants to be first at what they do","Optimistic, and a constant generator of ideas","Determined, strong willed, adapts fast to new situations","Ends up in leadership positions and manages people well"],
+  2:["Strong intuition and a real read on other people's emotions","Natural diplomat, smooths conflict, finds common ground with anyone","Calm, reserved, with healing or spiritual ability","Excellent communicator and speaker, deeply connected to nature"],
+  3:["Bright, warm, expressive, with a strong sense of style and aesthetics","Artistic and imaginative, and a capable manager at the same time","Carries themselves with dignity, like the owner of their own life","Family oriented, affectionate, loves children"],
+  4:["Strong inner core, hardworking, dependable","Organized and systematic in every area of life","Makes balanced decisions in genuinely difficult situations","Not afraid of responsibility, leads well in business and at home"],
+  5:["Analytical, able to assess, calculate and forecast","Endlessly curious, versatile, always learning something new","Gifted teacher, explains complex things simply","Strong communication and public speaking ability"],
+  6:["Naturally magnetic and charismatic","Values harmony, beauty and comfort, with excellent taste","Gifted with their hands, strong in beauty, design, healing, craft","Creates warm homes and genuinely enjoys hosting people"],
+  7:["The energy of a fighter and a winner, fast and decisive","Brave, independent, ambitious, goal driven","Loves travel, movement, growth, constant development","Strong intuition, senses dishonesty, gets to the root of things"],
+  8:["Strong sense of justice, honest, principled, trustworthy","Highly responsible, understands cause and effect deeply","Hardworking, driven toward status and financial success","Protects those weaker than them, builds and manages real wealth"],
+  9:["Natural wisdom and a philosophical view of life","Compassionate, responsive to other people's pain","Strong spiritual and intuitive potential, excellent memory","Talented in almost any field they commit to, recharges in solitude"]
+};
+
+var SHADOW = {
+  1:["Pride, ego, and too much focus on their own importance","Takes criticism and competition badly","Lone wolf mode, I can do all of it myself","Or the opposite, no confidence in their own leadership, apathy"],
+  2:["Manipulation, or slipping into a victim mindset","Dependence on other people and on relationships","Doubt, indecision, passivity","Secretive and distrustful, prone to gossip and quiet resentment"],
+  3:["Pride, and judging people by status","Control and dominance over the people closest to them","Emotional swings, drama, problems invented in their own head","Career swallows everything else, or emotional dependence on a partner"],
+  4:["Comes across as cold, rigid or overly strict","Authoritarian, over controls the people they love","Overly fixed on material success, status and power","Disconnected from their own body and emotional needs"],
+  5:["Needs freedom and variety to the point of never finishing anything","Or the reverse, rigidly conservative and closed to new ideas","Struggles to admit being wrong, imposes their opinion","Restless mind, overthinking, anxiety, trouble sleeping"],
+  6:["Over invested in relationships, pleasure and comfort","Idealizes people and situations, rose colored glasses","Sensitive, easily hurt, moody, prone to low periods","Preoccupied with appearance, compares themselves, undervalues their own worth"],
+  7:["Laziness, apathy, potential left unused","Scattered energy, cannot hold focus","Neglects the body and health, prone to unhealthy attachments","Or the opposite extreme, overwork and burnout from never stopping"],
+  8:["Obsession with money and financial security","Blames others for what goes wrong","Constantly fighting the world in the name of justice","Extremes with money, either hoarding it or burning through it"],
+  9:["Withdraws, avoids the outside world","Reluctant to share what they know","Swings between severe asceticism and attachment to luxury","Savior syndrome, helping everyone at their own expense, and impostor syndrome"]
+};
+
+/* ============================================================
+   LOGIC
+   ============================================================ */
+var state = {day:null,month:null,year:null,birth:null,life:null};
+var unlocked = 1;
+
+function populateSelects(){
+  var dayEl=document.getElementById('sel-day'),
+      monthEl=document.getElementById('sel-month'),
+      yearEl=document.getElementById('sel-year');
+  var months=["January","February","March","April","May","June","July","August","September","October","November","December"];
+
+  var o='<option value="">Day</option>';
+  for(var d=1;d<=31;d++){o+='<option value="'+d+'">'+d+'</option>';}
+  dayEl.innerHTML=o;
+
+  o='<option value="">Month</option>';
+  for(var m=0;m<12;m++){o+='<option value="'+(m+1)+'">'+months[m]+'</option>';}
+  monthEl.innerHTML=o;
+
+  o='<option value="">Year</option>';
+  var ty=new Date().getFullYear();
+  for(var y=ty;y>=ty-95;y--){o+='<option value="'+y+'">'+y+'</option>';}
+  yearEl.innerHTML=o;
+
+  [dayEl,monthEl,yearEl].forEach(function(el){el.addEventListener('change',checkDate);});
+}
+
+function checkDate(){
+  var d=document.getElementById('sel-day').value,
+      m=document.getElementById('sel-month').value,
+      y=document.getElementById('sel-year').value;
+  document.getElementById('calc-btn').disabled=!(d&&m&&y);
+  if(d&&m&&y){state.day=+d;state.month=+m;state.year=+y;}
+}
+
+function reduce(n){
+  n=Math.abs(n);
+  while(n>9){
+    var s=0;String(n).split('').forEach(function(c){s+=+c;});
+    n=s;
+  }
+  return n;
+}
+
+function calculate(){
+  var birth=reduce(state.day);
+  var all=(''+state.day)+(''+state.month)+(''+state.year);
+  var sum=0;all.split('').forEach(function(c){sum+=+c;});
+  var life=reduce(sum);
+  if(!life)life=9;
+  if(!birth)birth=9;
+
+  state.birth=birth;state.life=life;
+
+  document.getElementById('out-birth').textContent=birth;
+  document.getElementById('out-life').textContent=life;
+  document.getElementById('code-pair').textContent=birth+' · '+life;
+
+  // countries, three of them, the rest stays behind the lock on purpose
+  var list=COUNTRIES[life]||[], shown=list.slice(0,3), rest=list.length-shown.length;
+  var html='';
+  shown.forEach(function(c){html+='<span class="chip">'+c+'</span>';});
+  if(rest>0){html+='<span class="chip locked">+ '+rest+' more on your number</span>';}
+  document.getElementById('out-countries').innerHTML=html;
+  document.getElementById('country-note').textContent =
+    rest>0 ? 'Three of the '+list.length+' countries carrying your Life Path vibration. The full list, and which of them fits the life you actually want, comes on day 2.'
+           : 'These carry the same vibration as your Life Path number.';
+
+  // city, the opening of the reading only
+  document.getElementById('out-city-name').textContent=CITY[life].name;
+  document.getElementById('out-city-text').textContent=CITY[life].text;
+
+  // light and shadow of the birth number, first three of each
+  var p='';(LIGHT[birth]||[]).slice(0,3).forEach(function(t){p+='<li>'+t+'</li>';});
+  document.getElementById('out-pos').innerHTML=p;
+  var n='';(SHADOW[birth]||[]).slice(0,3).forEach(function(t){n+='<li>'+t+'</li>';});
+  document.getElementById('out-neg').innerHTML=n;
+
+  // hand the code to the landing page
+  document.getElementById('site-link').href='../?birth='+birth+'&path='+life;
+
+  goTo(2);
+}
+
+function bumpMeter(){
+  unlocked++;
+  if(unlocked>4)unlocked=4;
+  document.getElementById('meter-text').textContent=unlocked+' of 4 unlocked';
+  document.getElementById('meter-bar').style.width=(unlocked*25)+'%';
+}
+
+function goTo(i){
+  document.querySelectorAll('.step').forEach(function(s){s.classList.add('hidden');});
+  var el=document.getElementById('step-'+i);
+  el.classList.remove('hidden');
+  el.classList.add('fade');
+  document.querySelectorAll('#rail .dot').forEach(function(d){
+    var di=+d.getAttribute('data-i');
+    d.classList.toggle('active',di===i);
+    d.classList.toggle('done',di<i);
+  });
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+populateSelects();
+document.getElementById('start-btn').addEventListener('click',function(){goTo(1);});
+document.getElementById('calc-btn').addEventListener('click',calculate);
+
+// progressive reveals
+document.querySelectorAll('.reveal > button').forEach(function(btn){
+  btn.addEventListener('click',function(){
+    var box=btn.parentElement;
+    var body=box.querySelector('.body');
+    var wasOpen=box.classList.contains('open');
+    box.classList.toggle('open');
+    body.classList.toggle('hidden');
+    btn.querySelector('.tag').textContent=wasOpen?'Open':'Yours';
+    if(!wasOpen){
+      if(!box.getAttribute('data-counted')){
+        box.setAttribute('data-counted','1');
+        bumpMeter();
+      }
+      body.classList.add('fade');
+    }
+  });
+});
+
+// locks
+document.querySelectorAll('.lock > button').forEach(function(btn){
+  btn.addEventListener('click',function(){
+    var body=btn.parentElement.querySelector('.body');
+    body.classList.toggle('hidden');
+    body.classList.add('fade');
+  });
+});
+
+/* ---------- ambient starfield ---------- */
+(function(){
+  var canvas=document.getElementById('stars'),ctx=canvas.getContext('2d');
+  var reduceMotion=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var stars=[],W,H;
+  function resize(){W=canvas.width=window.innerWidth;H=canvas.height=window.innerHeight;}
+  function seed(){
+    stars=[];
+    var count=Math.min(140,Math.floor((W*H)/9000));
+    for(var i=0;i<count;i++){
+      stars.push({x:Math.random()*W,y:Math.random()*H,r:Math.random()*1.3+0.3,phase:Math.random()*Math.PI*2,speed:0.008+Math.random()*0.018});
+    }
+  }
+  function draw(t){
+    ctx.clearRect(0,0,W,H);
+    for(var i=0;i<stars.length;i++){
+      var s=stars[i];
+      var tw=reduceMotion?0.7:(0.5+0.5*Math.sin(s.phase+t*s.speed));
+      ctx.beginPath();ctx.arc(s.x,s.y,s.r,0,Math.PI*2);
+      ctx.fillStyle="rgba(245,240,255,"+(0.15+0.55*tw)+")";ctx.fill();
+    }
+    if(!reduceMotion)requestAnimationFrame(draw);
+  }
+  resize();seed();
+  window.addEventListener('resize',function(){resize();seed();});
+  draw(0);
+})();
+</script>
+</body>
+</html>
