@@ -132,6 +132,14 @@
     margin:16px 0 0;font-size:13.5px;color:var(--gold-light);
     border-left:2px solid rgba(184,145,47,.45);padding-left:12px;line-height:1.55;
   }
+  .lead-in{margin:0 0 18px;font-size:14.5px;color:var(--ink);}
+  .shadow-box{
+    margin-top:20px;padding:16px 18px;border-radius:14px;
+    background:rgba(157,125,232,.07);border:1px solid rgba(157,125,232,.3);
+  }
+  .reveal .body .shadow-box h4.warn{color:#c9a4ff;margin-top:0;}
+  .shadow-box ul{margin-bottom:0;}
+  .warn-note{margin:14px 0 0;font-size:13.5px;color:var(--ink-muted);line-height:1.55;}
 
   .divider{display:flex;align-items:center;gap:14px;margin:34px 0 24px;}
   .divider span{font-family:'Space Mono',monospace;font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-faint);white-space:nowrap;}
@@ -263,23 +271,30 @@
         <div class="body hidden">
           <span class="cityname" id="out-city-name"></span>
           <div id="out-city-text"></div>
-          <p class="gated">The rest of this reading, what this energy does to your money, your work and your relationships once you live inside it, is opened on day 2.</p>
+          <p class="warn-note" style="margin-top:14px;">This is the city that fits you. A city of another number will keep asking you to be someone you are not, and after a few years that stops feeling like a place problem and starts feeling like a you problem.</p>
+          <p class="gated">Which number your own city carries, and what that has been doing to your money, your work and your relationships, is opened on day 2.</p>
         </div>
       </div>
 
       <!-- reveal 3: light and shadow -->
       <div class="reveal" id="rev-3">
         <button type="button" data-rev="3">
-          <span>The light and the shadow of your Birth Number</span>
+          <span>What your number does in the right place, and in the wrong one</span>
           <span class="tag">Open</span>
         </button>
         <div class="body hidden">
-          <h4>Where your number shines</h4>
+          <p class="lead-in">Your numbers never change. The place does. Live in a country and a city that match your code and your number works from its strong side. Live in one that does not and the same number turns around and works against you. Same person, opposite life.</p>
+
+          <h4>If you are in the right place</h4>
           <ul id="out-pos"></ul>
-          <h4>Where it costs you</h4>
-          <ul id="out-neg"></ul>
-          <p style="margin:14px 0 0;font-size:14px;">The right place amplifies the first list. The wrong one amplifies the second, which is why the same person can look unrecognizable in two different cities.</p>
-          <p class="gated">This is the short version of your number. The full portrait, including how it behaves under stress and in money, is day 1.</p>
+
+          <div class="shadow-box">
+            <h4 class="warn">If you are not, this is what you will feel instead</h4>
+            <ul id="out-neg"></ul>
+            <p class="warn-note">Most people never connect this to geography. They read it as a bad year, a wrong job, a difficult character, their own fault. Years go by like that. Very often it is simply the place, and the place is the one thing that can be changed in a month.</p>
+          </div>
+
+          <p class="gated">Whether the city you live in right now is one of them, or one of the others, is a calculation. You get it on day 2.</p>
         </div>
       </div>
 
@@ -454,8 +469,8 @@ function calculate(){
   if(rest>0){html+='<span class="chip locked">+ '+rest+' more on your number</span>';}
   document.getElementById('out-countries').innerHTML=html;
   document.getElementById('country-note').textContent =
-    rest>0 ? 'Three of the '+list.length+' countries carrying your Life Path vibration. The full list, and which of them fits the life you actually want, comes on day 2.'
-           : 'These carry the same vibration as your Life Path number.';
+    rest>0 ? 'Three of the '+list.length+' countries that carry your Life Path vibration. In these the country works with your numbers. Everywhere else you spend part of your energy every day just holding your ground, and that is the difference people call luck. The full list comes on day 2.'
+           : 'These carry the same vibration as your Life Path number. Everywhere else you spend part of your energy every day just holding your ground.';
 
   // city, the opening of the reading only
   document.getElementById('out-city-name').textContent=CITY[life].name;
@@ -464,7 +479,7 @@ function calculate(){
   // light and shadow of the birth number, first three of each
   var p='';(LIGHT[birth]||[]).slice(0,3).forEach(function(t){p+='<li>'+t+'</li>';});
   document.getElementById('out-pos').innerHTML=p;
-  var n='';(SHADOW[birth]||[]).slice(0,3).forEach(function(t){n+='<li>'+t+'</li>';});
+  var n='';(SHADOW[birth]||[]).forEach(function(t){n+='<li>'+t+'</li>';});
   document.getElementById('out-neg').innerHTML=n;
 
   // hand the code to the landing page
