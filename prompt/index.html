@@ -330,7 +330,7 @@ window.onYouTubeIframeAPIReady = function(){
       onReady: function(){
         ready = true;
         var d = player.getDuration();
-        if(d && d > 10){ TARGET = Math.min(120, Math.max(20, Math.round(d*0.6))); }
+        if(d && d > 10){ TARGET = (d > 140) ? 120 : Math.max(20, Math.round(d*0.6)); }
         paint();
       },
       onStateChange: function(e){
