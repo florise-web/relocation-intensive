@@ -111,6 +111,25 @@ form .btn{width:100%;margin-top:6px;font-size:15px;padding:16px}
 .done p{color:var(--text-muted);font-size:15px}
 .err{color:#f0a3a3;font-size:13.5px;text-align:center}
 .hidden{display:none!important}
+.voice-grid div{display:flex;flex-direction:column}
+.voice-grid .btn{margin-top:auto;align-self:flex-start}
+.voice-grid p{margin-bottom:14px}
+.btn.small{font-size:13px;padding:11px 20px}
+button.btn{font:inherit;font-family:Unbounded,sans-serif;font-weight:600}
+.modal{position:fixed;inset:0;z-index:80;background:rgba(5,2,14,.78);backdrop-filter:blur(4px);display:flex;align-items:flex-start;justify-content:center;overflow-y:auto;padding:24px 16px}
+.sheet{width:100%;max-width:480px;margin:auto;background:var(--bg-panel);border:1px solid rgba(184,145,47,.45);border-radius:22px;padding:28px 24px;position:relative}
+.sheet .x{position:absolute;top:12px;right:14px;background:none;border:none;color:var(--text-muted);font-size:26px;cursor:pointer;line-height:1}
+.sheet .kind{font-family:Unbounded,sans-serif;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold-light);margin-bottom:6px}
+.sheet h3{font-size:19px;margin-bottom:4px;padding-right:24px}
+.sheet .sum{font-family:Unbounded,sans-serif;font-size:30px;color:var(--gold-light);margin:6px 0 18px}
+.sheet form{gap:10px}
+.sheet textarea{width:100%;background:rgba(255,255,255,.04);border:1px solid var(--border);border-radius:12px;padding:12px 14px;font:inherit;font-size:16px;color:var(--text);min-height:76px;resize:vertical}
+.sheet textarea:focus{outline:none;border-color:var(--gold)}
+.sheet .note{font-size:12.5px;color:var(--text-muted);text-align:center;margin-top:10px}
+.sheet .note a{color:var(--gold-light)}
+.paystep{text-align:center}
+.paystep p{color:var(--text-muted);font-size:15px;margin-bottom:18px}
+.paystep .btn{width:100%}
 
 .faq-item{border-bottom:1px solid var(--border);padding:20px 0;max-width:680px;margin:0 auto}
 .faq-item:last-child{border-bottom:none}
@@ -160,8 +179,8 @@ footer{border-top:1px solid var(--border);padding:28px 0;text-align:center;color
         <div class="top"><span class="n">02</span><span class="tag">Mini course · recorded</span></div>
         <h3>The Relocation Code course</h3>
         <p>Three pre-recorded lessons based on different methods that help you unlock all of your location codes. Enroll at your own convenience and take the course whenever you are free.</p>
-        <div class="meta"><b>$44</b>3 recorded lessons · send <b style="font-size:13px;margin:0 2px">MOVE</b> for access</div>
-        <a class="btn ghost" data-ig href="#">Message Dina</a>
+        <div class="meta"><b>$44</b>3 recorded lessons · pre-order now</div>
+        <button class="btn" type="button" data-buy="course">Buy now · $44</button>
       </div>
 
       <div class="step">
@@ -201,8 +220,8 @@ footer{border-top:1px solid var(--border);padding:28px 0;text-align:center;color
           <li><i>✦</i><span><b>Additional insights</b> via voice notes</span></li>
           <li><i>✦</i><span><b>1 follow-up question</b> after your consultation</span></li>
         </ul>
-        <a class="btn ghost" data-ig href="#">Book one area</a>
-        <p class="hint">Opens Instagram, send the word <b>AREA</b></p>
+        <button class="btn ghost" type="button" data-buy="area">Buy now · $150</button>
+        <p class="hint">Dina confirms your call time right after payment</p>
       </div>
 
       <div class="reading full">
@@ -216,8 +235,8 @@ footer{border-top:1px solid var(--border);padding:28px 0;text-align:center;color
           <li><i>✦</i><span><b>Additional questions</b> explored during the consultations, where relevant</span></li>
           <li><i>✦</i><span><b>Follow-up questions</b> after receiving your presentation</span></li>
         </ul>
-        <a class="btn" data-ig href="#">Book a full reading</a>
-        <p class="hint">Opens Instagram, send the word <b>FULL</b></p>
+        <button class="btn" type="button" data-buy="full">Buy now · $470</button>
+        <p class="hint">Dina confirms your call times right after payment</p>
       </div>
 
       <div class="reading">
@@ -232,8 +251,8 @@ footer{border-top:1px solid var(--border);padding:28px 0;text-align:center;color
           <li><i>✦</i><span><b>A personalized PDF presentation</b></span></li>
           <li><i>✦</i><span><b>Follow-up support</b> after your reading</span></li>
         </ul>
-        <a class="btn ghost" data-ig href="#">Book the Deep Dive</a>
-        <p class="hint">Opens Instagram, send the word <b>DEEP</b></p>
+        <button class="btn ghost" type="button" data-buy="deep">Buy now · $690</button>
+        <p class="hint">Dina confirms your call times right after payment</p>
       </div>
     </div>
 
@@ -259,12 +278,11 @@ footer{border-top:1px solid var(--border);padding:28px 0;text-align:center;color
         <p>A quicker way to receive personalized numerology insights without booking a private consultation</p>
       </div>
       <div class="voice-grid">
-        <div><b>$35</b><h4>One Question</h4><p>Ask one specific question and receive a personalized voice note analysis based on your date of birth.</p></div>
-        <div><b>$70</b><h4>One Life Area</h4><p>A focused voice note reading dedicated to one chosen area of your life.</p></div>
-        <div><b>$70</b><h4>Partner Compatibility</h4><p>A compatibility reading based on both partners' dates of birth.</p></div>
+        <div><b>$35</b><h4>One Question</h4><p>Ask one specific question and receive a personalized voice note analysis based on your date of birth.</p><button class="btn ghost small" type="button" data-buy="vq">Buy now · $35</button></div>
+        <div><b>$70</b><h4>One Life Area</h4><p>A focused voice note reading dedicated to one chosen area of your life.</p><button class="btn ghost small" type="button" data-buy="va">Buy now · $70</button></div>
+        <div><b>$70</b><h4>Partner Compatibility</h4><p>A compatibility reading based on both partners' dates of birth.</p><button class="btn ghost small" type="button" data-buy="vc">Buy now · $70</button></div>
       </div>
       <p class="voice-note">Voice note readings do not include a PDF presentation or live consultation.</p>
-      <div style="text-align:center"><a class="btn ghost" data-ig href="#">Ask for a voice note reading</a><p class="hint" style="margin-top:12px;font-size:12.5px;color:var(--text-muted)">Opens Instagram, send the word <b style="color:var(--gold-light)">VOICE</b></p></div>
     </div>
   </div>
 </section>
@@ -339,11 +357,51 @@ footer{border-top:1px solid var(--border);padding:28px 0;text-align:center;color
   <div class="wrap">Dina Zoa · Numerology 💜<p style="margin-top:10px">Individual Entrepreneur Komekova-Zoa Dina Muratovna · 1 Turar Ryskulov St., apt. 42, Astana, Republic of Kazakhstan<!-- ADD IIN HERE --></p><p style="margin-top:4px"><a href="mailto:dinazoa44@gmail.com">dinazoa44@gmail.com</a> · <a href="https://wa.me/77719776662" target="_blank" rel="noopener">WhatsApp support</a></p><p style="margin-top:8px"><a href="terms.html">Terms of service</a> · <a href="refund.html">Refund policy</a> · <a href="privacy.html">Privacy policy</a> · <a href="payment.html">Payment</a></p></div>
 </footer>
 
+<div class="modal hidden" id="buyModal" role="dialog" aria-modal="true" aria-labelledby="buyTitle">
+  <div class="sheet">
+    <button class="x" type="button" id="buyClose" aria-label="Close">×</button>
+    <div class="kind" id="buyKind">Your order</div>
+    <h3 id="buyTitle">Product</h3>
+    <div class="sum" id="buyPrice">$0</div>
+    <form id="buyForm" novalidate>
+      <div><label for="b-name">Your name</label><input id="b-name" type="text" autocomplete="name" required></div>
+      <div><label for="b-email">Email</label><input id="b-email" type="email" autocomplete="email" required></div>
+      <div><label for="b-phone">WhatsApp</label><input id="b-phone" type="tel" autocomplete="tel" placeholder="+41 79 000 00 00"></div>
+      <div id="f-dob"><label for="b-dob">Your date of birth</label><input id="b-dob" type="text" placeholder="DD.MM.YYYY" inputmode="numeric"></div>
+      <div id="f-pdob"><label for="b-pdob">Partner's date of birth</label><input id="b-pdob" type="text" placeholder="DD.MM.YYYY" inputmode="numeric"></div>
+      <div id="f-tz"><label for="b-tz">Your city or time zone</label><input id="b-tz" type="text" placeholder="Geneva"></div>
+      <div id="f-q"><label for="b-q" id="b-q-label">Your question</label><textarea id="b-q"></textarea></div>
+      <p class="err hidden" id="buyErr"></p>
+      <button class="btn" type="submit" id="buyBtn">Continue to payment</button>
+      <p class="note">By continuing you accept the <a href="terms.html">terms</a> and the <a href="refund.html">refund policy</a>.</p>
+    </form>
+    <div class="paystep hidden" id="payStep">
+      <p>Your order is saved. Complete the payment and Dina will get back to you personally.</p>
+      <a class="btn" id="payLink" href="#" target="_blank" rel="noopener">Pay $0</a>
+      <p class="note" style="margin-top:14px">Questions? <a href="https://wa.me/77719776662" target="_blank" rel="noopener">Write to support on WhatsApp</a></p>
+    </div>
+  </div>
+</div>
+
 <script>
 /* ====== SETTINGS, edit these two lines ====== */
 var INSTAGRAM = "dina.zoa";          // Instagram username that receives the DMs
 var FORM_EMAIL = "dinazoa44@gmail.com";                 // email that receives waitlist signups (via formsubmit.co)
-var SHEET_URL = "";                 // Google Apps Script web app that writes signups to the sheet
+var SHEET_URL = "";                 // Google Apps Script web app that writes signups and orders to the sheet
+var WHATSAPP = "77719776662";        // used for payment until card payment links are added below
+var PAY_LINKS = {                    // paste a card payment link per product when the payment provider is connected
+  area: "", full: "", deep: "", vq: "", va: "", vc: "", course: ""
+};
+var PRODUCTS = {
+  area:   { name: "One Life Area Reading", kind: "Private reading", price: 150, f: ["dob", "tz", "q"], q: "Which area of your life do you want to look at?" },
+  full:   { name: "Full Private Reading", kind: "Private reading", price: 470, f: ["dob", "tz"] },
+  deep:   { name: "The Deep Dive", kind: "Private reading", price: 690, f: ["dob", "tz"] },
+  vq:     { name: "Voice note reading, one question", kind: "Voice note reading", price: 35, f: ["dob", "q"], q: "Your question" },
+  va:     { name: "Voice note reading, one life area", kind: "Voice note reading", price: 70, f: ["dob", "q"], q: "Which area of your life?" },
+  vc:     { name: "Voice note reading, partner compatibility", kind: "Voice note reading", price: 70, f: ["dob", "pdob"] },
+  course: { name: "The Relocation Code course", kind: "Recorded course", price: 44, f: [] }
+};
+function toSheet(data) { if (!SHEET_URL) return; try { fetch(SHEET_URL, { method: "POST", mode: "no-cors", body: new URLSearchParams(data) }); } catch (x) {} }
 /* ============================================ */
 
 var igLink = "https://ig.me/m/" + INSTAGRAM;
@@ -366,7 +424,7 @@ form.addEventListener("submit", function (e) {
   if (!name || !phone || !/^\S+@\S+\.\S+$/.test(email)) { fail("Please fill in your name, a valid email and a phone number."); return; }
   if (!FORM_EMAIL) { window.open(igLink, "_blank"); fail("The form is being connected. Send the word COURSE to Dina on Instagram and you are on the list."); return; }
   btn.disabled = true; btn.textContent = "Sending";
-  if (SHEET_URL) { try { fetch(SHEET_URL, { method: "POST", mode: "no-cors", body: new URLSearchParams({ name: name, email: email, phone: phone, page: location.href }) }); } catch (x) {} }
+  toSheet({ type: "waitlist", name: name, email: email, phone: phone, product: "Decode Your Life", price: "", details: "", page: location.href });
   fetch("https://formsubmit.co/ajax/" + encodeURIComponent(FORM_EMAIL), {
     method: "POST",
     headers: { "Content-Type": "application/json", "Accept": "application/json" },
@@ -376,6 +434,50 @@ form.addEventListener("submit", function (e) {
     form.classList.add("hidden"); document.getElementById("formFine").classList.add("hidden");
     document.getElementById("formDone").classList.remove("hidden");
   }).catch(function () { fail("Something went wrong on our side. Please send the word COURSE to Dina on Instagram instead."); });
+});
+
+/* ====== Orders ====== */
+var modal = document.getElementById("buyModal"), buyForm = document.getElementById("buyForm"),
+    buyBtn = document.getElementById("buyBtn"), buyErr = document.getElementById("buyErr"),
+    payStep = document.getElementById("payStep"), payLink = document.getElementById("payLink"), current = null, lastFocus = null;
+function $(id) { return document.getElementById(id); }
+function openBuy(key) {
+  var p = PRODUCTS[key]; if (!p) return; current = key; lastFocus = document.activeElement;
+  $("buyKind").textContent = p.kind; $("buyTitle").textContent = p.name; $("buyPrice").textContent = "$" + p.price;
+  ["dob", "pdob", "tz", "q"].forEach(function (f) { $("f-" + f).classList.toggle("hidden", p.f.indexOf(f) < 0); });
+  if (p.q) $("b-q-label").textContent = p.q;
+  buyErr.classList.add("hidden"); buyForm.classList.remove("hidden"); payStep.classList.add("hidden");
+  buyBtn.disabled = false; buyBtn.textContent = "Continue to payment";
+  modal.classList.remove("hidden"); document.body.style.overflow = "hidden"; $("b-name").focus();
+}
+function closeBuy() { modal.classList.add("hidden"); document.body.style.overflow = ""; if (lastFocus) lastFocus.focus(); }
+document.querySelectorAll("[data-buy]").forEach(function (b) { b.addEventListener("click", function () { openBuy(b.getAttribute("data-buy")); }); });
+$("buyClose").addEventListener("click", closeBuy);
+modal.addEventListener("click", function (e) { if (e.target === modal) closeBuy(); });
+document.addEventListener("keydown", function (e) { if (e.key === "Escape" && !modal.classList.contains("hidden")) closeBuy(); });
+buyForm.addEventListener("submit", function (e) {
+  e.preventDefault();
+  var p = PRODUCTS[current], v = function (id) { return ($(id).value || "").trim(); };
+  var name = v("b-name"), email = v("b-email"), phone = v("b-phone"), dob = v("b-dob"), pdob = v("b-pdob"), tz = v("b-tz"), q = v("b-q");
+  var need = !name || !/^\S+@\S+\.\S+$/.test(email) || (p.f.indexOf("dob") > -1 && !dob) || (p.f.indexOf("pdob") > -1 && !pdob) || (p.f.indexOf("q") > -1 && !q);
+  if (need) { buyErr.textContent = "Please fill in your name, a valid email and the fields above."; buyErr.classList.remove("hidden"); return; }
+  var details = [dob && "DOB " + dob, pdob && "Partner DOB " + pdob, tz && "Time zone " + tz, q && "Q: " + q].filter(Boolean).join(" | ");
+  buyBtn.disabled = true; buyBtn.textContent = "Saving";
+  toSheet({ type: "order", name: name, email: email, phone: phone, product: p.name, price: p.price, details: details, page: location.href });
+  var done = function () {
+    var link = PAY_LINKS[current];
+    if (!link) {
+      var msg = "Hi Dina! I'd like to buy " + p.name + " ($" + p.price + ").\nName: " + name + "\nEmail: " + email + (details ? "\n" + details.split(" | ").join("\n") : "");
+      link = "https://wa.me/" + WHATSAPP + "?text=" + encodeURIComponent(msg);
+    }
+    payLink.href = link; payLink.textContent = "Pay $" + p.price;
+    buyForm.classList.add("hidden"); payStep.classList.remove("hidden"); payLink.focus();
+  };
+  if (!FORM_EMAIL) { done(); return; }
+  fetch("https://formsubmit.co/ajax/" + encodeURIComponent(FORM_EMAIL), {
+    method: "POST", headers: { "Content-Type": "application/json", "Accept": "application/json" },
+    body: JSON.stringify({ _subject: "New order: " + p.name + " $" + p.price + " from " + name, _template: "table", product: p.name, price: "$" + p.price, name: name, email: email, whatsapp: phone, details: details })
+  }).catch(function () {}).then(done);
 });
 </script>
 </body>
