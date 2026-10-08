@@ -176,7 +176,7 @@ footer{border-top:1px solid var(--border);padding:28px 0;text-align:center;color
         <div class="top"><span class="n">04</span><span class="tag">Live course</span></div>
         <h3>Decode Your Life course</h3>
         <p>More than just a learning process, this six week course is a full spectrum numerology and community hub. You learn all the basics you need to read numbers for yourself, your family and friends, or even to consult others. The course includes a supportive community chat, live calls, questions answered in real time, teacher support and all the learning materials.</p>
-        <div class="meta"><b>Next cohort</b>2027</div>
+        <div class="meta"><b>Next cohort</b>Summer 2027</div>
         <a class="btn ghost" href="#course">Join the waitlist</a>
       </div>
 
@@ -343,6 +343,7 @@ footer{border-top:1px solid var(--border);padding:28px 0;text-align:center;color
 /* ====== SETTINGS, edit these two lines ====== */
 var INSTAGRAM = "dina.zoa";          // Instagram username that receives the DMs
 var FORM_EMAIL = "dinazoa44@gmail.com";                 // email that receives waitlist signups (via formsubmit.co)
+var SHEET_URL = "";                 // Google Apps Script web app that writes signups to the sheet
 /* ============================================ */
 
 var igLink = "https://ig.me/m/" + INSTAGRAM;
@@ -365,6 +366,7 @@ form.addEventListener("submit", function (e) {
   if (!name || !phone || !/^\S+@\S+\.\S+$/.test(email)) { fail("Please fill in your name, a valid email and a phone number."); return; }
   if (!FORM_EMAIL) { window.open(igLink, "_blank"); fail("The form is being connected. Send the word COURSE to Dina on Instagram and you are on the list."); return; }
   btn.disabled = true; btn.textContent = "Sending";
+  if (SHEET_URL) { try { fetch(SHEET_URL, { method: "POST", mode: "no-cors", body: new URLSearchParams({ name: name, email: email, phone: phone, page: location.href }) }); } catch (x) {} }
   fetch("https://formsubmit.co/ajax/" + encodeURIComponent(FORM_EMAIL), {
     method: "POST",
     headers: { "Content-Type": "application/json", "Accept": "application/json" },
